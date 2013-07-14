@@ -19,8 +19,18 @@ $(document).ready(function() {
     };
     var sortable_list = new SortableList(ul_to_array($('#sortable_list')));
     
-    $('#sort_button').click(function(event) {
+    $('#mergesort_button').click(function(event) {
         sortable_list.merge_sort();
+        array_to_ul($('#sortable_list'), sortable_list.list);
+    });
+    
+    $('#quicksort_button').click(function(event) {
+        sortable_list.quick_sort();
+        array_to_ul($('#sortable_list'), sortable_list.list);
+    });
+    
+    $('#heapsort_button').click(function(event) {
+        sortable_list.heap_sort();
         array_to_ul($('#sortable_list'), sortable_list.list);
     });
     

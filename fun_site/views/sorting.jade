@@ -1,0 +1,52 @@
+extends layout
+
+block content
+	script(src="/javascripts/jquery-1.10.2.min.js")
+	script(src="/javascripts/SortableList.js")
+	script(src="/javascripts/sorting.js")
+	
+	h1 Sorting a List
+	p.
+		Here we have a list of unsorted items, which you can randomize and/or add to.  At any time, you can click the button for any one of the sorting algorithms, and that algorithm will be executed against the list, sorting it.  The guts of each algorithm is explained below.
+		
+	
+	div#list_area
+		ul(id="sortable_list")
+			li 1
+			li 53
+			li 10
+			li 33
+			li 12
+			li 43
+			li 2
+			li 3
+			li 9
+			li 23
+			li 22
+			li 32
+			
+	div#button_area
+		input(id="mergesort_button",type="button",value="Merge Sort")
+		input(id="quicksort_button",type="button",value="Quicksort")
+		input(id="heapsort_button",type="button",value="Heapsort")
+		input(id="randomize_button",type="button",value="Randomize List")
+			
+	div#explanations
+		h3 Merge Sort
+		p.
+			Merge sort is a divide and conquer sorting algorithm.  It works by first recursively breaking the list down into smaller and smaller halves (left and right) and feeding each recursive result into a merge function that will simultaneously merge the already sorted left and right lists from previous recursions.
+		h3 Quicksort
+		p.
+			Quicksort works by choosing a pivot index on the array and moving all elements smaller than the pivot to the left of it, and all elements larger than the pivot to the right of it.  This is done recursively such that the arrays are broken down further and further to the point that the comparison is trivial.  The sorting is done in place as well, such that when the recursion finishes, the array is sorted.  The space complexity is O(n).
+		h3 Heapsort
+		p.
+			Heapsort works by turning the list into a special binary tree, called a heap.  This heap can be either a max-heap or a min-heap. A max-heap requires that every node is smaller than its parent.  A min-heap requires the opposite, that every node is larger than its parent.  The tree structure is simulated in the array by using a function of the distances between elements to determine the parent-child relationship.  More specifically, for any element at index i:  
+		ul
+			li The left child is located at index 2i
+			li The right child is located at index 2i+1
+			li The parent is located at i/2
+		p.
+			Once the heap is created, it can be traversed in O(log n) time to create the final sorted list.
+			
+
+	

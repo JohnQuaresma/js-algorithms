@@ -6,7 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
-  , algorithms = require('./routes/algorithms')
+  , sorting = require('./routes/sorting')
   , http = require('http')
   , path = require('path');
 
@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/algorithms', algorithms.index);
+app.get('/sorting', sorting.index);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
