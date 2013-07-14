@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	script(src="/javascripts/jquery-1.10.2.min.js")
+	script(src="/javascripts/SortableList.js")
+	script(src="/javascripts/algorithms.js")
+	
+	h1 Algorithms
+	p.
+		Running various algorithms
+	h3 Merge Sort
+	p.
+		Merge sort works by first recursively breaking the list down into smaller and smaller halves (left and right) and feeding each recursive result into a merge function that will simultaneously merge the already sorted left and right lists from previous recursions.
+		Click below to use it...
+	div#list_area
+		ul(id="sortable_list")
+			li 1
+			li 53
+			li 10
+			li 33
+			li 12
+			li 43
+			li 2
+			li 3
+			li 9
+			li 23
+			li 22
+			li 32
+			
+	div#button_area
+		input(id="sort_button",type="button",value="Sort List")
+		input(id="randomize_button",type="button",value="Randomize List")
+			
+				
+			
+	
