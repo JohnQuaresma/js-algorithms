@@ -251,3 +251,49 @@ SortableList.prototype.heap_sort = (function() {
     }
 })();
 
+/**
+ *  Executes the counting_sort algorithm to sort the internal list.
+ *  
+ * This works in linear time by using a storage array of size x where
+ * x is the max *value* in the unsorted array.  A count is then kept
+ * at each index in the storage array of how many elements exist in the
+ * unsorted array with a value matching that index.  Once that count is 
+ * complete, the storage array is iterated over and each slot is made to
+ * equal the sum of its value and the value of the preceeding index.  The 
+ * result of this iteration is that each index will contain the count of items
+ * in the unsorted array that are greater than or equal to the value that matches
+ * the index.  This data is then used to place items from the unsorted array into
+ * the result array.
+ */
+SortableList.prototype.counting_sort = (function() {
+    return function() {
+        var self = this;
+        self.list = (function(list) {
+            if (!list || list.length <= 1) {
+                return list;
+            }
+            var max = list[0];
+            var storage = [];
+            var result = [];
+            /**Find max value in the list */
+            for (var i = 1; i<list.length; i++) {
+                max = ((list[i] > max) ? list[i] : max);
+            }
+            for (i = 0; i<=max; i++) {
+                storage.push(0);
+            }
+            for (i = 0; i<list.length; i++) {
+                storage[list[i]]++;
+            }
+            for (i = 1; i<storage.length; i++) {
+                storage[i] += storage[i-1];
+            }
+            for (i = list.length-1; i>=0; i--) {
+                result[storage[list[i]]-1] = list[i];
+                storage[list[i]]--;
+            }
+            return result;
+        })(self.list);
+    };
+})();
+

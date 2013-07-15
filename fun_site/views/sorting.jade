@@ -29,6 +29,7 @@ block content
 		input(id="mergesort_button",type="button",value="Merge Sort")
 		input(id="quicksort_button",type="button",value="Quicksort")
 		input(id="heapsort_button",type="button",value="Heapsort")
+		input(id="countingsort_button",type="button",value="Counting sort")
 		input(id="randomize_button",type="button",value="Randomize List")
 			
 	div#explanations
@@ -47,6 +48,9 @@ block content
 			li The parent is located at i/2
 		p.
 			Once the heap is created, it can be traversed in O(log n) time to create the final sorted list.
+		h3 Counting Sort
+		p.
+			Counting sort is not a comparison sort, and thus is not limited by the best case O(n log n) runtime complexity of a comparison sort.  Counting sort works by using the values of the unsorted array as indexes in a storage array, adding a 1 for each element represented at the index corresponding to its value, then iterating through the storage array and summing up the numbers in each bucket to the next bucket all the way through.  The result is that for each value in the sorted array, the value at the matching index in the storage array will contain a count of the number of items in the unsorted array that are larger than it is.  This will, in turn, determine the index of each value in the final sorted array.  Counting sort runs in linear - O(n) - time, but has a potential problem with space complexity, as it will be impractical when the max value in the unsorted array is very large.
 			
 
 	

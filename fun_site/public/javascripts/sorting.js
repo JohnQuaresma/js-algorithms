@@ -34,6 +34,11 @@ $(document).ready(function() {
         array_to_ul($('#sortable_list'), sortable_list.list);
     });
     
+    $('#countingsort_button').click(function(event) {
+        sortable_list.counting_sort();
+        array_to_ul($('#sortable_list'), sortable_list.list);
+    });
+    
     $('#randomize_button').click(function(event) {
         sortable_list.randomize();
         array_to_ul($('#sortable_list'), sortable_list.list);
